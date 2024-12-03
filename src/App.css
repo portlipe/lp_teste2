@@ -40,7 +40,84 @@ header {
 header.scrolled {
   background-color: rgba(0, 0, 0, 0.9); /* Fundo semi-transparente ao rolar */
 }
-  
+
+.burger-button {
+  display: none; /* Tornado visível apenas em telas menores */
+  position: fixed; /* Fixa no canto superior direito */
+  top: 20px; /* Ajusta a margem superior */
+  right: 20px; /* Ajusta a margem direita */
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.burger-button .line {
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.burger-button.open .line:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger-button.open .line:nth-child(2) {
+  opacity: 0;
+}
+
+.burger-button.open .line:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.menu {
+  display: flex;
+  gap: 15px;
+  margin-left: auto;
+  transition: transform 0.3s ease;
+}
+
+.menu.open {
+  transform: translateX(0);
+}
+
+@media (max-width: 1024px) {
+  .burger-button {
+    display: flex;
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    width: 250px;
+    height: 100%;
+    padding: 20px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .menu.open {
+    transform: translateX(0);
+  }
+
+  .menu .form-button {
+    color: white;
+    margin: 10px 0;
+    font-size: 1rem;
+  }
+}
+
 
 .menu {
   display: flex;
@@ -228,4 +305,141 @@ p {
 .whatsapp-button img {
   width: 52.55px; 
   height: 52.66px; 
+}
+
+/* Responsividade para telas menores que 1024px */
+@media (max-width: 1024px) {
+  header {
+    padding: 20px 40px;
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    max-width: 200px;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+  }
+
+  .menu.open {
+    display: flex;
+    transform: translateX(0);
+  }
+
+  .menu .form-button {
+    color: white;
+    font-size: 18px;
+    padding: 15px 0;
+    text-align: left;
+  }
+
+  .burger-button {
+    display: flex;
+    margin-left: auto;
+  }
+
+  p {
+    font-size: 32px;
+    margin-left: 20px;
+    margin-top: 120px;
+  }
+
+  .servicos-container {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .servico-item {
+    flex: 1 1 45%;
+    max-width: 45%;
+  }
+
+  .sobre {
+    flex-direction: column;
+    margin: 40px 20px;
+  }
+
+  .sobre-coluna {
+    margin: 20px 0;
+    width: 100%;
+  }
+}
+
+/* Responsividade para telas menores que 758px */
+@media (max-width: 758px) {
+  header {
+    padding: 10px 20px;
+    justify-content: space-between;
+  }
+
+  .logo img {
+    max-width: 150px;
+  }
+
+  .menu .form-button {
+    font-size: 16px;
+  }
+
+  p {
+    font-size: 24px;
+    margin-left: 10px;
+    text-align: center;
+  }
+
+  .servicos h2 {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .servicos-container {
+    gap: 10px;
+  }
+
+  .servico-item {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .servico-item img {
+    width: 100%;
+    height: auto;
+  }
+
+  .sobre {
+    margin: 20px 10px;
+  }
+
+  .sobre-coluna {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .popup-cookies {
+    bottom: 10px;
+    left: 10px;
+    width: calc(100% - 20px);
+    max-width: 400px;
+  }
+
+  .whatsapp-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .whatsapp-button img {
+    width: 35px;
+    height: 35px;
+  }
 }

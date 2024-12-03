@@ -59,6 +59,9 @@ function App() {
     }
   };
 
+  const [menuOpen, setMenuOpen] = useState(false); 
+
+
   const easeInOutQuad = (t) => {
     return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
   };
@@ -75,17 +78,30 @@ function App() {
           <div className="logo">
             <img src={logo} alt="logo" loading="lazy" width="336" height="48.64" />
           </div>
-          <div className="menu">
-            <button className="form-button" onClick={() => scrollToSection(homeRef)}>HOME</button>
-            <button className="form-button" onClick={() => scrollToSection(servicosRef)}>SERVIÇOS</button>
-            <button className="form-button" onClick={() => scrollToSection(sobreNosRef)}>SOBRE NÓS</button>
-            <button className="form-button">DIFERENCIAIS</button>
-            <button className="form-button">PROJETOS</button>
-            <button className="form-button">INSTITUCIONAL</button>
-            <button className="form-button">CLIENTES</button>
-            <button className="form-button">CONTATO</button>
-          </div>
+          {/* Burger Button */}
+            <button
+              className={`burger-button ${menuOpen ? 'open' : ''}`}
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle menu"
+            >
+              <span className="line"></span>
+              <span className="line"></span>
+              <span className="line"></span>
+            </button>
+
+            {/* Menu */}
+            <nav className={`menu ${menuOpen ? 'open' : ''}`}>
+              <button className="form-button" onClick={() => scrollToSection(homeRef)}>HOME</button>
+              <button className="form-button" onClick={() => scrollToSection(servicosRef)}>SERVIÇOS</button>
+              <button className="form-button" onClick={() => scrollToSection(sobreNosRef)}>SOBRE NÓS</button>
+              <button className="form-button">DIFERENCIAIS</button>
+              <button className="form-button">PROJETOS</button>
+              <button className="form-button">INSTITUCIONAL</button>
+              <button className="form-button">CLIENTES</button>
+              <button className="form-button">CONTATO</button>
+           </nav>
         </header>
+
         <p>
           Preparando <strong>o terreno</strong> para obras <br />
           de grande porte com quase <br />
